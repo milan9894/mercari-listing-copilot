@@ -28,7 +28,13 @@ st.write(
 )
 
 api_key = os.getenv("GEMINI_API_KEY")
-client = genai.Client(api_key=api_key) if api_key else None
+
+if not api_key:
+    try:
+        api_key = st.secrets["GEMINI_API_KEY"]
+    except (KeyError, FileNotFoundError):
+        api_key = None
+        client = genai.Client(api_key=api_key) if api_key else None
 
 if not api_key:
     st.warning(
