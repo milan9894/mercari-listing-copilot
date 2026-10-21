@@ -46,7 +46,7 @@ Mercari Listing Copilot combines image understanding and price estimation in one
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/milan9894/mercari-listing-copilot.git
 cd mercari-listing-copilot
 ```
 
