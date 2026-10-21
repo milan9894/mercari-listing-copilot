@@ -4,6 +4,10 @@
 
 **[🚀 Launch Live Demo](https://mercari-listing-copilotutmsourcechatgptcom-wn2qrtcajffldvqdimx.streamlit.app/)** | **[💻 View Source Code](https://github.com/milan9894/mercari-listing-copilot)**
 
+# 🛍️ Mercari Listing Copilot
+
+**Status: In Progress** 🚧
+
 Mercari Listing Copilot is an AI-powered web application designed to reduce the effort required to create second-hand marketplace listings. It transforms product photos into editable listing drafts and helps sellers estimate a price using comparable-item prices they provide.
 
 ## 🎯 Problem Statement
