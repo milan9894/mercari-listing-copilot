@@ -11,7 +11,8 @@ from PIL import Image, UnidentifiedImageError
 from google import genai
 from google.genai import types
 
-# Load API key from .env
+
+# Load API key from .env locally, or Streamlit Secrets in the cloud.
 load_dotenv()
 
 st.set_page_config(
@@ -34,13 +35,16 @@ if not api_key:
         api_key = st.secrets["GEMINI_API_KEY"]
     except (KeyError, FileNotFoundError):
         api_key = None
-        client = genai.Client(api_key=api_key) if api_key else None
+
+# IMPORTANT: Initialize client outside the fallback block.
+client = genai.Client(api_key=api_key) if api_key else None
 
 if not api_key:
     st.warning(
         "Gemini API key not found. Add GEMINI_API_KEY to your "
-        "local .env file and restart the app."
+        "local .env file or Streamlit Cloud Secrets."
     )
+
 
 # -------------------- SIDEBAR SETTINGS --------------------
 
@@ -76,6 +80,7 @@ with st.sidebar:
             "For parts or repair",
         ],
     )
+
 
 # -------------------- IMAGE UPLOAD --------------------
 
@@ -177,7 +182,6 @@ Accuracy rules:
                             "Gemini returned no text. Please try again."
                         )
                     else:
-                        # Save the new draft and reset old editor values.
                         st.session_state["listing_draft"] = response.text
                         st.session_state["original_seller_notes"] = (
                             extra_details or ""
@@ -211,14 +215,13 @@ Accuracy rules:
                             "reached. Check your Google AI Studio quota."
                         )
                     elif "401" in error_text or "403" in error_text:
-                        st.warning(
-                            "Check your API key and model access."
-                        )
+                        st.warning("Check your API key and model access.")
                     else:
                         st.caption(f"Technical details: {error_text}")
 
     except (UnidentifiedImageError, OSError):
         st.error("That image could not be opened. Try another JPG or PNG.")
+
 
 # -------------------- EDITABLE LISTING --------------------
 
@@ -308,6 +311,7 @@ if "listing_draft" in st.session_state:
         mime="text/plain",
         width="stretch",
     )
+
 
 # -------------------- PRICE ESTIMATOR --------------------
 
