@@ -2,7 +2,9 @@
 # 🛍️ Mercari Listing Copilot
 ### AI-Assisted Resale Listing Platform
 
-Mercari Listing Copilot is an AI-powered prototype designed to reduce the effort required to create second-hand marketplace listings. It transforms product photos into editable listing drafts and helps sellers estimate a price using comparable-item prices they provide.
+**[🚀 Launch Live Demo](https://mercari-listing-copilotutmsourcechatgptcom-wn2qrtcajffldvqdimx.streamlit.app/)** | **[💻 View Source Code](https://github.com/milan9894/mercari-listing-copilot)**
+
+Mercari Listing Copilot is an AI-powered web application designed to reduce the effort required to create second-hand marketplace listings. It transforms product photos into editable listing drafts and helps sellers estimate a price using comparable-item prices they provide.
 
 ## 🎯 Problem Statement
 
@@ -21,17 +23,17 @@ Mercari Listing Copilot combines image understanding and price estimation in one
 - **Seller verification prompts:** Highlights details sellers should confirm rather than treating uncertain visual guesses as facts.
 - **Comparable-price estimator:** Calculates the median of seller-provided comparable prices and displays an illustrative range.
 - **Downloadable listing:** Allows sellers to save their edited listing as a text file.
-- **Currency selection:** Supports the currencies configured in the application.
+- **Currency selection:** Supports INR, USD, JPY, and MYR for price estimation.
 
 ## ⚙️ How It Works
 
 1. The seller uploads a product photo.
 2. The seller selects the item category and reported condition and may provide additional details.
-3. Gemini generates a draft based on the photo and seller-provided information.
+3. Gemini analyzes the image and generates a listing draft.
 4. The seller reviews and edits the generated content.
 5. The seller enters prices from comparable items.
-6. The application calculates the median and an illustrative range.
-7. The seller downloads the final draft.
+6. The application calculates the median and an illustrative price range.
+7. The seller downloads the final listing as a text file.
 
 ## 🧰 Technology Stack
 
@@ -85,30 +87,34 @@ py -m streamlit run app.py
 
 The prototype uses prices entered by the seller for comparable items.
 
-- Reference price: median of the entered comparable prices.
-- Illustrative lower estimate: median × 0.90.
-- Illustrative upper estimate: median × 1.10.
+- **Reference price:** Median of the entered comparable prices.
+- **Illustrative lower estimate:** Median × 0.90.
+- **Illustrative upper estimate:** Median × 1.10.
 
-This range is a simple heuristic, not a verified market valuation. The current prototype does not automatically retrieve live marketplace prices.
+This range is a simple heuristic, not a verified market valuation. The application does not automatically retrieve live marketplace prices.
 
 ## 🛡️ Responsible AI
 
 - AI-generated descriptions are drafts, not verified product facts.
 - Sellers should confirm brand, model, size, material, authenticity, and other important details.
-- The photo may not reveal hidden damage or whether an item works.
+- A photo may not reveal hidden damage or whether an item works.
 - Sellers retain control over the final listing and asking price.
 
 ## 🔭 Future Improvements
 
-- Automated research of current prices from permitted marketplace data sources.
+- Automated price research using permitted marketplace data sources.
 - More robust structured AI output and listing validation.
 - Optional WhatsApp listing summaries using Twilio.
 - Listing quality checks and usability testing.
-- Deployment as a publicly accessible web application.
+- Expanded testing across product categories and image conditions.
 
 ## 📌 Project Status
 
-Working local prototype. AI listing generation, seller editing, listing download, and comparable-price estimation have been tested locally. Live marketplace price research, WhatsApp integration, and public deployment remain future improvements.
+**Deployed working prototype.**
+
+The application has been deployed using Streamlit Community Cloud. AI-assisted listing generation, editable listing fields, downloadable listings, and comparable-price estimation have been tested.
+
+Automated live marketplace price research and WhatsApp integration are planned future improvements.
 
 ---
 
